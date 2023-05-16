@@ -1,0 +1,51 @@
+<app-nav-bar></app-nav-bar>
+
+<main cdkDropListGroup class="mb-10">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mx-4 sm:mx-6 md:mx-14 mt-12">
+    <div class="bg-green-50 bg-opacity-50 h-auto flex flex-col rounded-xl"
+      cdkDropList
+      
+      [cdkDropListData]="items"
+
+      (cdkDropListDropped)="drop($event)">
+      <header class="text-center font-semibold text-xl text-pink-600 px-4 py-2">TO - DO</header>
+      
+      <ul class="example-list">
+        <li class="example-box text-lg list-none text-slate-600 font-serif text-center px-3 py-2 mt-2 rounded-lg flex justify-between"
+          cdkDrag *ngFor="let item of items; index as i">
+          <div>{{item.task}}</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="bg-green-50 bg-opacity-50 h-auto flex flex-col rounded-xl"
+      cdkDropList
+
+      [cdkDropListData]="midLists"
+
+      (cdkDropListDropped)="drop($event)">
+      <header class="text-center font-semibold text-xl text-pink-600 px-4 py-2">IN - PROGRESS</header>
+
+      <ul class="example-list">
+        <li class="example-box text-lg list-none text-slate-600 font-serif text-center px-3 py-2 mt-2 rounded-lg flex justify-between"
+          cdkDrag *ngFor="let midList of midLists; index as i">
+          <div>{{midList.task}}</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="bg-green-50 bg-opacity-50 h-auto flex flex-col rounded-xl"
+      cdkDropList
+      [cdkDropListData]="doneLists"
+      (cdkDropListDropped)="drop($event)">
+      <header class="text-center font-semibold text-xl text-pink-600 px-4 py-2">COMPLETED</header>
+
+      <ul class="example-list">
+        <li class="example-box text-lg list-none text-slate-600 font-serif text-center px-3 py-2 mt-2 rounded-lg flex justify-between"
+          cdkDrag *ngFor="let doneList of doneLists; index as i">
+          <div>{{doneList.task}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</main>

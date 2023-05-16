@@ -1,0 +1,16 @@
+<nav class="font-sans flex flex-col text-center sm:flex-row sm:text-center sm:justify-between py-4 px-6 bg-green-50 bg-opacity-60 shadow sm:items-baseline">
+  <div class="mb-2 sm:mb-0">
+    <a href="/home" class="text-3xl no-underline text-pink-600 hover:text-blue-dark font-bold ml-12">Kanban-Board</a>
+  </div>
+  <form class="flex flex-col sm:flex-row sm:items-center mr-12" [formGroup]="formGroup" (ngSubmit)="addItem()">
+    <div class="flex-grow sm:mr-4">
+      <input (keyup.enter)="addItem()" type="text" placeholder="Add your task here..." class="w-full h-10 px-4 py-2 border-2 border-gray-100 p-2 rounded-md focus:border-pink-600 focus:outline-none" [(ngModel)]="addInput" formControlName="task">
+      <!-- <div *ngIf="formGroup.get('task').invalid && formGroup.get('task').touched" class="text-red-500 mt-1 ml-2">
+        Task is required.
+      </div> -->
+    </div>
+    <button type="submit" mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon" (click)="addItem()" [disabled]="formGroup.invalid" class="ml-0 sm:ml-2 mt-4 sm:mt-0">
+      <mat-icon>add</mat-icon>
+    </button>
+  </form>
+</nav>
